@@ -4,7 +4,16 @@ Personal Emacs Configuration
 Stuff I've gathered over the many years of using emacs.
 A lot of the 3rd party scripts are directly copied in order to save users from hunting this across the net.
 
+
 Assuming thiis cloned to ~/rdiankov-emacs-config, execute the following to setup in system:
+
+Ubuntu:
+
+.. code-block::
+
+  sudo apt-get install python-mode pymacs
+
+All:
 
 .. code-block::
 

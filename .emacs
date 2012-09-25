@@ -627,6 +627,7 @@
 ; open header files in c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
+(require 'revbufs)
 
 ;; python 
 ; http://www.emacswiki.org/emacs/?action=browse;oldid=PythonMode;id=PythonProgrammingInEmacs
