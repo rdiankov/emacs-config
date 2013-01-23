@@ -10,7 +10,6 @@
 ; japanese-anthy をデフォルトの input-method にする。
 ;(setq default-input-method "japanese-anthy")
 
-
 (defun lw:byte-compile-directory(directory)
   "Byte compile every .el file into a .elc file in the given directory. See
    `byte-recompile-directory'."
@@ -314,12 +313,15 @@
 ;; (define-key global-map [(control shift f2)] 'viss-bookmark-clear-all-buffer)
 
 (defun openrave-package-path ()
-  (save-excursion
-    (with-temp-buffer
-      (call-process "openrave-config" nil t nil "--cflags-only-I")
-      (goto-char (point-min))
-      (re-search-forward "^-I\\(.*\\)[ \\|$]")
-      (match-string 1))))
+  (if (executable-find "openrave-config")
+      (save-excursion
+        (with-temp-buffer
+          (call-process "openrave-config" nil t nil "--cflags-only-I")
+          (goto-char (point-min))
+          (re-search-forward "^-I\\(.*\\)[ \\|$]")
+          (match-string 1)))
+    nil
+    ))
 
 (setq openrave-base-dir (openrave-package-path))
 (message "openrave dir: %s" (openrave-package-path))
@@ -328,8 +330,8 @@
 ; command when user will press . or > after variables, that are class or
 ; structure instances, and displaying of list of possible completions for given class or structure.
 (defun my-c-mode-cedet-hook ()
-  (local-set-key "." 'semantic-complete-self-insert)
-  (local-set-key ">" 'semantic-complete-self-insert)
+;  (local-set-key "." 'semantic-complete-self-insert)
+;  (local-set-key ">" 'semantic-complete-self-insert)
 )
 (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
 (add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
@@ -340,14 +342,16 @@
 ;;(semantic-add-system-include (concat (ros-package-dir "roscpp") "/include") 'c++-mode)
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
-;(semantic-add-system-include "/home/rdiankov/ros/diamondback/jsk-ros-pkg/openrave_planning/openrave/openrave_svn/include" 'c++-mode)
-;(semantic-add-system-include "/home/rdiankov/ros/diamondback/jsk-ros-pkg/openrave_planning/openrave/openrave_svn/include" 'c-mode)
-
-(semantic-add-system-include "/home/rdiankov/mujinsvn/trunk/ros/mujin/openrave_mujin/openrave_svn/include" 'c++-mode)
-(semantic-add-system-include "/home/rdiankov/mujinsvn/trunk/ros/mujin/openrave_mujin/openrave_svn/include" 'c-mode)
+(if (file-exists-p "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include/openrave/openrave.h")
+    (progn    
+      (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c++-mode)
+      (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c-mode)
+      )
+  nil)
 
 (add-to-list 'auto-mode-alist (cons openrave-base-dir 'c++-mode))
 (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat openrave-base-dir "/openrave/config.h"))
+
 ;(add-to-list 'semantic-lex-c-preprocessor-symbol-map '("OPENRAVE_API" . ""))
 ;(semantic-c-add-preprocessor-symbol "OPENRAVE_API" 'nil)
 
@@ -507,13 +511,10 @@
   (add-hook 'uncrustify-finish-hooks 'bm-buffer-restore)
 )
 
-(print "yooooooo")
 ; add uncrustify only if ~/.uncrustify.cfg exists
 (when (file-readable-p "~/.uncrustify.cfg")
   (add-hook 'c++-mode-hook 'my-uncrustify-hook)
   (add-hook 'c-mode-hook 'my-uncrustify-hook)
-  ( print "asfdadfa")
-
 )
 
 ; uncrustify-uncrustify-cfg-file
@@ -641,9 +642,14 @@
 ;(require 'python-mode)
 ;(require 'auto-complete)
 
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+;(autoload 'python-mode "python-mode" "Python Mode." t)
+;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+;(defun python-shell (&rest args) nil)
+;(setq py-shell-alist nil)
+;(setq py-python-command nil)
+;(setq py-shell nil)
+;(setq py-shell-name nil)
 
 ;; (add-hook 'python-mode-hook
 ;;       (lambda ()
@@ -660,11 +666,12 @@
 ;(require 'pymacs)
 ;; pymacs
 
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
+;(autoload 'pymacs-apply "pymacs")
+;(autoload 'pymacs-call "pymacs")
+;(autoload 'pymacs-eval "pymacs" nil t)
+;(autoload 'pymacs-exec "pymacs" nil t)
+;(autoload 'pymacs-load "pymacs" nil t)
+
 
 ;; (add-hook 'python-mode-hook '(lambda ()
 ;;                                (pymacs-load "ropemacs" "rope-")

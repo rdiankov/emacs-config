@@ -17,6 +17,7 @@ All:
 
 .. code-block::
 
+  git clone https://github.com/rdiankov/emacs-config.git $HOME/rdiankov-emacs-config
   ln -f -s $HOME/rdiankov-emacs-config/.emacs-lisp $HOME/.emacs-lisp
   ln -f -s $HOME/rdiankov-emacs-config/.emacs $HOME/.emacs
   cd $HOME/.emacs-lisp/cedet-1.1
