@@ -4,14 +4,17 @@ Personal Emacs Configuration
 Stuff I've gathered over the many years of using emacs.
 A lot of the 3rd party scripts are directly copied in order to save users from hunting this across the net.
 
-
 Assuming thiis cloned to ~/rdiankov-emacs-config, execute the following to setup in system:
 
 Ubuntu:
 
 .. code-block::
 
-  sudo apt-get install python-mode pymacs
+  sudo add-apt-repository ppa:cassou/emacs
+  sudo apt-get update
+  sudo apt-get install emacs-snapshot emacs-snapshot-el # emacs 24.1
+  sudo apt-get install emacs-snapshot-lucid # optional
+  sudo apt-get install --no-install-recommends python-mode pymacs xfonts-75dpi
 
 All:
 
@@ -30,5 +33,5 @@ Can byte-compile everything in the .emacs-lisp directory to accelerate the start
   C-u 0 M-x byte-recompile-directory
 
   
-Warning: This repository holds the emacs configuration I used everyday for my computer systems. It is not meant to be cross-platform or supported on old systems.
+Warning: This repository holds the emacs configuration I used everyday for my computer systems (Ubuntu 10.04/12.04, Debian). It is not meant to be cross-platform or supported on old systems.
 

@@ -68,7 +68,7 @@
 ;;       '("%S: " (buffer-file-name "%f"
 ;;                                  (dired-directory dired-directory "%b"))))
 
-(pc-selection-mode)
+;;(pc-selection-mode)
 
 ; syntax highlighting
 ;(global-font-lock-mode)
@@ -320,7 +320,7 @@
           (goto-char (point-min))
           (re-search-forward "^-I\\(.*\\)[ \\|$]")
           (match-string 1)))
-    nil
+    ""
     ))
 
 (setq openrave-base-dir (openrave-package-path))
