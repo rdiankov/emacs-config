@@ -408,18 +408,6 @@
  'tabbar-separator-face nil
  :height 0.7)
 
-;; don't display scratch buffers
-;; (when (require 'tabbar nil t)
-;;   (setq tabbar-buffer-groups-function
-;;     	(lambda (b) (list "All Buffers")))
-;;   (setq tabbar-buffer-list-function
-;;     	(lambda ()
-;;     	  (remove-if
-;;     	   (lambda(buffer)
-;;     	     (find (aref (buffer-name buffer) 0) " *"))
-;;     	   (buffer-list))))
-;;   (tabbar-mode))
-
 ;; kill *scratch* buffer
 ;;(kill-buffer (current-buffer))
 
@@ -427,6 +415,13 @@
 (setq tabbar-buffer-groups-function
       (lambda (buffer)
         (list "All buffers")))
+
+(setq tabbar-buffer-list-function
+      (lambda ()
+    	  (remove-if
+    	   (lambda(buffer)
+    	     (find (aref (buffer-name buffer) 0) " *"))
+    	   (buffer-list))))
 
 ;; The following will provide windows style (shift-)control tab behaviour and autoload tabbar-mode. Use a prefix to change groups and no prefix to change the buffer.
 
@@ -447,6 +442,10 @@
 ;(global-set-key [\C-\S-tab] 'shk-tabbar-prev)
 
 (tabbar-mode 1)
+
+; set keys
+(global-set-key (kbd "M-k") 'shk-tabbar-next)
+(global-set-key (kbd "M-j") 'shk-tabbar-prev)
 
 ;(global-set-key (kbd "C-<tab>") 'tabbar-forward)
 ;(global-set-key (read-kbd-macro "C-S-<tab>") 'tabbar-forward)
@@ -557,9 +556,6 @@
 ;; (global-set-key (kbd "<mouse-4>") 'sd-mousewheel-scroll-down)
 
 
-; set keys
-(global-set-key (kbd "M-k") 'shk-tabbar-next)
-(global-set-key (kbd "M-j") 'shk-tabbar-prev)
 
 ;; ignore `.svn' and `CVS' directories
 (setq grep-find-command
