@@ -68,7 +68,7 @@
 ;;       '("%S: " (buffer-file-name "%f"
 ;;                                  (dired-directory dired-directory "%b"))))
 
-;;(pc-selection-mode)
+(delete-selection-mode)
 
 ; syntax highlighting
 ;(global-font-lock-mode)
@@ -194,6 +194,8 @@
              ))
 
 ; shortcuts
+(global-set-key (kbd "<M-backspace>") 'backward-kill-word)
+
 (defvar LIMIT 1)
 (defvar time 0)
 (defvar mylist nil)
@@ -263,6 +265,8 @@
 )
 
 ; CEDET
+(remove-hook 'python-mode-hook 'wisent-python-default-setup)
+
 (load-file "~/.emacs-lisp/cedet-1.1/common/cedet.el")
 ;(semantic-load-enable-semantic-debugging-helpers)      ; Enable prototype help and smart completion
 (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
@@ -274,6 +278,8 @@
 (require 'semanticdb)
 (global-semanticdb-minor-mode 1)
 
+; remove python hook from CEDET
+(remove-hook 'python-mode-hook 'wisent-python-default-setup)
 
 (defun my-cedet-hook ()
   (local-set-key [(control return)] 'semantic-ia-complete-symbol)
@@ -514,7 +520,7 @@
 ; add uncrustify only if ~/.uncrustify.cfg exists
 (when (file-readable-p "~/.uncrustify.cfg")
   (add-hook 'c++-mode-hook 'my-uncrustify-hook)
-  (add-hook 'c-mode-hook 'my-uncrustify-hook)
+;;  (add-hook 'c-mode-hook 'my-uncrustify-hook)
 )
 
 ; uncrustify-uncrustify-cfg-file
@@ -551,50 +557,9 @@
 ;; (global-set-key (kbd "<mouse-4>") 'sd-mousewheel-scroll-down)
 
 
-; Octave Scripts, check out http://sunsite.univie.ac.at/textbooks/octave/octave_34.html
-; http://www.gnu.org/software/octave/doc/interpreter/Using-Octave-Mode.html#Using-Octave-Mode
-; octave mode for m files
-;(autoload 'octave-mode "octave-mod" nil t)
-;(setq auto-mode-alist
-;      (cons '("\\.m$" . octave-mode) auto-mode-alist))
-;(add-hook 'octave-mode-hook
-;          (lambda ()
-;            (abbrev-mode 1)
-;            (setq octave-block-offset 4) ;; no useless indenting
-;            (setq octave-auto-indent t)
-;            (setq octave-blink-matching-block t)
-;            (if (eq window-system 'x)
-;                (font-lock-mode 1))))
-
-;; auto indent after ;
-
-;; (add-hook 'inferior-octave-mode-hook
-;;           (lambda ()
-;;             (turn-on-font-lock)
-;;             (define-key inferior-octave-mode-map [up]
-;;               'comint-previous-input)
-;;             (define-key inferior-octave-mode-map [down]
-;;               'comint-next-input)))
-
-(global-set-key [f9] 'octave-send-region)
-
-; matlab file syntax
-;(autoload 'matlab-mode "~/.emacs-lisp/matlab.el" "Enter Matlab mode." t)
-;(setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist))
-;(autoload 'matlab-shell "~/.emacs-lisp/matlab.el" "Interactive Matlab mode." t)
-
-;(autoload 'octave-help "octave-hlp" nil t)
-;(require 'gnuserv)
-;(gnuserv-start)
-
 ; set keys
 (global-set-key (kbd "M-k") 'shk-tabbar-next)
 (global-set-key (kbd "M-j") 'shk-tabbar-prev)
-
-;; interfacing with ros
-(require 'rosemacs)
-(invoke-rosemacs)
-(global-set-key "\C-x\C-r" ros-keymap)
 
 ;; ignore `.svn' and `CVS' directories
 (setq grep-find-command
@@ -608,7 +573,6 @@
       (dolist (file cfiles)
         (add-to-list 'semantic-lex-c-preprocessor-symbol-file file)))))
 
-;;
 (setq igrep-find-prune-clause "-type d -wholename \"*.svn*\"")
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -623,7 +587,6 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
-(setq auto-mode-alist (cons (cons "\\.launch$" (quote xml-mode)) auto-mode-alist))
 
 ; open header files in c++-mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
