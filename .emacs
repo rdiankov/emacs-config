@@ -37,6 +37,25 @@
       (auto-fill-mode 1)
       ))
 
+;; Open files and goto lines like we see from g++ etc. i.e. file:line#
+;; (to-do "make `find-file-line-number' work for emacsclient as well")
+;; (to-do "make `find-file-line-number' check if the file exists")
+(defadvice find-file (around find-file-line-number
+                             (filename &optional wildcards)
+                             activate)
+  "Turn files like file.cpp:14 into file.cpp and going to the 14-th line."
+  (save-match-data
+    (let* ((matched (string-match "^\\(.*\\):\\([0-9]+\\):?$" filename))
+           (line-number (and matched
+                             (match-string 2 filename)
+                             (string-to-number (match-string 2 filename))))
+           (filename (if matched (match-string 1 filename) filename)))
+      ad-do-it
+      (when line-number
+        ;; goto-line is for interactive use
+        (goto-char (point-min))
+        (forward-line (1- line-number))))))
+
 ; add a load path
 (setq load-path  (cons (expand-file-name "~/.emacs-lisp/") load-path))
 
@@ -69,6 +88,9 @@
 ;;                                  (dired-directory dired-directory "%b"))))
 
 (delete-selection-mode)
+
+; always show columns
+(column-number-mode 1)
 
 ; syntax highlighting
 ;(global-font-lock-mode)
