@@ -159,8 +159,8 @@
 
 
 (setq-default indent-tabs-mode nil)
-(setq-default undo-limit 200000)
-(setq-default undo-strong-limit 300000)
+(setq-default undo-limit 40000)
+(setq-default undo-strong-limit 60000)
 
 
 ; disable splash/startup screen
