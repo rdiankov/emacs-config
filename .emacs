@@ -290,7 +290,7 @@
 (remove-hook 'python-mode-hook 'wisent-python-default-setup)
 
 (load-file "~/.emacs-lisp/cedet-1.1/common/cedet.el")
-;(semantic-load-enable-semantic-debugging-helpers)      ; Enable prototype help and smart completion
+;;(semantic-load-enable-semantic-debugging-helpers)      ; Enable prototype help and smart completion
 (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
 (setq global-semantic-stickyfunc-mode nil)
 (global-srecode-minor-mode 1)            ; Enable template insertion menu
@@ -307,13 +307,13 @@
   (local-set-key [(control return)] 'semantic-ia-complete-symbol)
   (local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
   (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
-;  (local-set-key (kbd "C-M-/") 'semantic-complete-analyze-inline)
+;;  (local-set-key (kbd "C-M-/") 'semantic-complete-analyze-inline)
   (local-set-key "\C-c=" 'semantic-decoration-include-visit)
   (local-set-key "\C-cj" 'semantic-ia-fast-jump)
   (local-set-key "\C-cq" 'semantic-ia-show-doc)
   (local-set-key "\C-cs" 'semantic-ia-show-summary)
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
-;  (local-set-key "\C-cp" 'semantic-symref)
+;;  (local-set-key "\C-cp" 'semantic-symref)
   (local-set-key "\C-c+" 'semantic-tag-folding-show-block)
   (local-set-key "\C-c-" 'semantic-tag-folding-fold-block)
   (local-set-key "\C-c\C-c+" 'semantic-tag-folding-show-all)
@@ -328,17 +328,10 @@
 (semanticdb-enable-gnu-global-databases 'c++-mode)
 
 ;;; ede customization
-;(require 'semantic-lex-spp)
-;(global-ede-mode 'nil)                      ; Enable the Project management system
+;;(require 'semantic-lex-spp)
+;;(global-ede-mode 'nil)                      ; Enable the Project management system
 ;;disable header tag
 ;;(setq global-semantic-stickyfunc-mode nil)
-
-;; visual studio bookmarks
-;; (require 'linemark)
-;; (define-key global-map [(control f2)] 'viss-bookmark-toggle)
-;; (define-key global-map [(shift f2)] 'viss-bookmark-prev-buffer)
-;; (define-key global-map [(f2)] 'viss-bookmark-next-buffer)
-;; (define-key global-map [(control shift f2)] 'viss-bookmark-clear-all-buffer)
 
 (defun openrave-package-path ()
   (if (executable-find "openrave-config")
@@ -409,6 +402,7 @@
 
 ;; tabs
 (require 'tabbar)
+(require 'cl) ; for remove-if
 
 (set-face-attribute
  'tabbar-default-face nil
@@ -443,7 +437,9 @@
     	  (remove-if
     	   (lambda(buffer)
     	     (find (aref (buffer-name buffer) 0) " *"))
-    	   (buffer-list))))
+    	   (buffer-list))
+          )
+      )
 
 ;; The following will provide windows style (shift-)control tab behaviour and autoload tabbar-mode. Use a prefix to change groups and no prefix to change the buffer.
 
