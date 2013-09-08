@@ -363,15 +363,21 @@
 ;;(semantic-add-system-include (concat (ros-package-dir "roscpp") "/include") 'c++-mode)
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
-(if (file-exists-p "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include/openrave/openrave.h")
-    (progn    
-      (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c++-mode)
-      (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c-mode)
-      )
-  nil)
+;; (if (file-exists-p "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include/openrave/openrave.h")
+;;     (progn    
+;;       (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c++-mode)
+;;       (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c-mode)
+;;       )
+;;   nil)
 
-(add-to-list 'auto-mode-alist (cons openrave-base-dir 'c++-mode))
-(add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat openrave-base-dir "/openrave/config.h"))
+(if (file-exists-p (concat openrave-base-dir "/openrave/config.h"))
+  (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat openrave-base-dir "/openrave/config.h"))
+  (semantic-add-system-include (concat openrave-base-dir "/openrave"))
+)
+
+;; don't enable this since it forces C++ mode on many things
+;;(add-to-list 'auto-mode-alist (cons openrave-base-dir 'c++-mode))
+
 
 ;(add-to-list 'semantic-lex-c-preprocessor-symbol-map '("OPENRAVE_API" . ""))
 ;(semantic-c-add-preprocessor-symbol "OPENRAVE_API" 'nil)
