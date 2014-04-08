@@ -6,7 +6,7 @@ A lot of the 3rd party scripts are directly copied in order to save users from h
 
 Assuming thiis cloned to ~/rdiankov-emacs-config, execute the following to setup in system:
 
-Ubuntu:
+Ubuntu 10.04:
 
 .. code-block::
 
@@ -14,6 +14,8 @@ Ubuntu:
   sudo apt-get update
   sudo apt-get install emacs-snapshot emacs-snapshot-el # emacs 24.1
   sudo apt-get install emacs-snapshot-lucid # optional
+
+Ubuntu All:
   sudo apt-get install --no-install-recommends python-mode pymacs xfonts-75dpi
 
 All:

@@ -286,18 +286,24 @@
   (execute-extended-command "gdb")
 )
 
-; CEDET
 (remove-hook 'python-mode-hook 'wisent-python-default-setup)
 
-(load-file "~/.emacs-lisp/cedet-1.1/common/cedet.el")
+;(setq python-shell-internal-send-string (lambda (string) nil))
+; in cedet semantic-python-get-system-include-path forces starting of the python interpreter in inferior mode. If python-shell-internal-send-string is defined before it, then we can skip loading python automatically (this might break other functionality?)
+(defun python-shell-internal-send-string (string) "")
+
+; CEDET
+;(load-file "~/.emacs-lisp/cedet-1.1/common/cedet.el")
+(load-file "~/.emacs-lisp/cedet_trunk_20140220/cedet-devel-load.el")
+
 ;;(semantic-load-enable-semantic-debugging-helpers)      ; Enable prototype help and smart completion
 (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
 (setq global-semantic-stickyfunc-mode nil)
 (global-srecode-minor-mode 1)            ; Enable template insertion menu
-(require 'semantic-ia)                   ; additional features for names comletion and displaying information of tags
-(require 'semantic-gcc)
+(require 'semantic/ia)                   ; additional features for names comletion and displaying information of tags
+(require 'semantic/bovine/gcc)
 
-(require 'semanticdb)
+(require 'semantic/db)
 (global-semanticdb-minor-mode 1)
 
 ; remove python hook from CEDET
@@ -323,7 +329,7 @@
 (add-hook 'c++-mode-common-hook 'my-cedet-hook)
 
 ;; gnu global support
-(require 'semanticdb-global)
+(require 'semantic/db-global)
 (semanticdb-enable-gnu-global-databases 'c-mode)
 (semanticdb-enable-gnu-global-databases 'c++-mode)
 
@@ -360,7 +366,7 @@
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS")
 )
-;;(semantic-add-system-include (concat (ros-package-dir "roscpp") "/include") 'c++-mode)
+
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
 ;; (if (file-exists-p "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include/openrave/openrave.h")
@@ -371,12 +377,14 @@
 ;;   nil)
 
 (if (file-exists-p (concat openrave-base-dir "/openrave/config.h"))
-  (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat openrave-base-dir "/openrave/config.h"))
+;  (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat openrave-base-dir "/openrave/config.h"))
   (semantic-add-system-include (concat openrave-base-dir "/openrave"))
 )
 
+
 ;; don't enable this since it forces C++ mode on many things
 ;;(add-to-list 'auto-mode-alist (cons openrave-base-dir 'c++-mode))
+
 
 
 ;(add-to-list 'semantic-lex-c-preprocessor-symbol-map '("OPENRAVE_API" . ""))
@@ -533,11 +541,23 @@
 (add-hook 'after-revert-hook 'bm-buffer-restore)
 
 (require 'uncrustify)
+(setq uncrustify-args "-l CPP --replace")
 (defun my-uncrustify-hook ()
-  (setq uncrustify-uncrustify-on-save t)
-  (setq uncrustify-args "-l CPP")
-  (add-hook 'uncrustify-init-hooks 'bm-buffer-save)
-  (add-hook 'uncrustify-finish-hooks 'bm-buffer-restore)
+;  (setq uncrustify-uncrustify-on-save t)
+;  (add-hook 'uncrustify-init-hooks 'bm-buffer-save)
+;  (add-hook 'uncrustify-finish-hooks 'bm-buffer-restore)
+;; (message "adding kill hook")
+;; (make-local-variable 'kill-buffer-hook)
+;; (add-hook 'kill-buffer-hook '(lambda()
+;; (interactive)
+;; (let* ((uncrustify-current-line (line-number-at-pos)))
+;; (save-excursion
+;; (message "why sadfasdf")
+;; (uncrustify-impl (point-min) (point-max)))
+;; (goto-char (point-min)) (forward-line (1- uncrustify-current-line)))))
+;; (message "kill hook added")
+  (global-set-key (kbd "C-M-]") 'uncrustify)
+  (global-set-key (kbd "C-M-\\") 'uncrustify-buffer)
 )
 
 ; add uncrustify only if ~/.uncrustify.cfg exists
@@ -545,10 +565,6 @@
   (add-hook 'c++-mode-hook 'my-uncrustify-hook)
 ;;  (add-hook 'c-mode-hook 'my-uncrustify-hook)
 )
-
-; uncrustify-uncrustify-cfg-file
-; 
-
 
 
 ; auto comment out a region
@@ -587,11 +603,11 @@
        "find . \\( -path '*/.svn' -o -path '*/CVS' \\) -prune -o -type f -print0"
               " | xargs -0 -e grep -i -n -e "))
 
-(defun c++-setup-boost (boost-root)
-  (when (file-accessible-directory-p boost-root)
-    (let ((cfiles (recur-list-files boost-root "\\(config\\|user\\)\\.hpp")))
-      (dolist (file cfiles)
-        (add-to-list 'semantic-lex-c-preprocessor-symbol-file file)))))
+;(defun c++-setup-boost (boost-root)
+;  (when (file-accessible-directory-p boost-root)
+;    (let ((cfiles (recur-list-files boost-root "\\(config\\|user\\)\\.hpp")))
+;      (dolist (file cfiles)
+;        (add-to-list 'semantic-lex-c-preprocessor-symbol-file file)))))
 
 (setq igrep-find-prune-clause "-type d -wholename \"*.svn*\"")
 (custom-set-variables
@@ -612,6 +628,27 @@
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 (require 'revbufs)
+
+(defun copy-buffer-file-name-as-kill (choice)
+  "Copy the buffer-file-name to the kill-ring"
+  (interactive "cCopy Buffer Name (F) Full, (D) Directory, (N) Name")
+  (let ((new-kill-string)
+        (name (if (eq major-mode 'dired-mode)
+                  (dired-get-filename)
+                (or (buffer-file-name) ""))))
+    (cond ((eq choice ?f)
+           (setq new-kill-string name))
+          ((eq choice ?d)
+           (setq new-kill-string (file-name-directory name)))
+          ((eq choice ?n)
+           (setq new-kill-string (file-name-nondirectory name)))
+          (t (message "Quit")))
+    (when new-kill-string
+      (message "%s copied" new-kill-string)
+      (x-select-text new-kill-string)
+      (kill-new new-kill-string))))
+(global-set-key (read-kbd-macro "M-C-w") 'copy-buffer-file-name-as-kill)
+
 
 ;; python 
 ; http://www.emacswiki.org/emacs/?action=browse;oldid=PythonMode;id=PythonProgrammingInEmacs
@@ -755,3 +792,7 @@
 ;; (defadvice ac-cleanup (after advice-turn-off-auto-start activate)
 ;;   (set (make-local-variable 'ac-auto-start) nil))
 ;; (define-key py-mode-map "\t" 'ryan-python-tab)
+
+;(require 'auto-complete-config)
+;(add-to-list 'ac-dictionary-directories "/var/www/.emacs-lisp/ac-dict")
+;(ac-config-default)
