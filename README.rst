@@ -25,7 +25,7 @@ All:
   git clone https://github.com/rdiankov/emacs-config.git $HOME/rdiankov-emacs-config
   ln -f -s $HOME/rdiankov-emacs-config/.emacs-lisp $HOME/.emacs-lisp
   ln -f -s $HOME/rdiankov-emacs-config/.emacs $HOME/.emacs
-  cd $HOME/.emacs-lisp/cedet-1.1
+  cd $HOME/.emacs-lisp/cedet_trunk_20140220
   make EMACS=emacs
   cd $HOME/.emacs-lisp/auto-complete-1.3.1
   make install DIR=$HOME/.emacs-lisp
