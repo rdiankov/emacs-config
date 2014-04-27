@@ -3,52 +3,48 @@
 ;;; Code:
 
 
-;;;### (autoloads (ede-android-project ede-android-load) "ede/android"
-;;;;;;  "android.el" (21253 29276))
-;;; Generated autoloads from android.el
+;;;### (autoloads (ede-project-sort-targets ede-customize-current-target
+;;;;;;  ede-customize-project) "ede/custom" "custom.el" "8dde549dbcbffda5b719ffc0fdaeb8c8")
+;;; Generated autoloads from custom.el
 
-(autoload 'ede-android-load "ede/android" "\
-Return an Android Project object if there is a match.
-Return nil if there isn't one.
-Argument DIR is the directory it is created for.
-ROOTPROJ is nil, since there is only one project.
+(autoload 'ede-customize-project "ede/custom" "\
+Edit fields of the current project through EIEIO & Custom.
 
-\(fn DIR &optional ROOTPROJ)" nil nil)
+\(fn)" t nil)
 
-(ede-add-project-autoload (ede-project-autoload "android" :name "ANDROID ROOT" :file 'ede/android :proj-file "AndroidManifest.xml" :load-type 'ede-android-load :class-sym 'ede-android-project :new-p t :safe-p t))
+(defalias 'customize-project 'ede-customize-project)
 
-(eieio-defclass-autoload 'ede-android-project '(ede-project eieio-instance-tracker) "ede/android" "Project for Android applications.")
+(autoload 'ede-customize-current-target "ede/custom" "\
+Edit fields of the current target through EIEIO & Custom.
+
+\(fn)" t nil)
+
+(defalias 'customize-target 'ede-customize-current-target)
+
+(autoload 'ede-project-sort-targets "ede/custom" "\
+Create a custom-like buffer for sorting targets of current project.
+
+\(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads (ede-ant-project ede-ant-load ede-ant-project-root)
-;;;;;;  "ede/ant" "ant.el" (21253 29276))
-;;; Generated autoloads from ant.el
+;;;### (autoloads (ede-cpp-root-project ede-cpp-root-project-root)
+;;;;;;  "ede/cpp-root" "cpp-root.el" "c17a6a7053747445724e078aea17ca64")
+;;; Generated autoloads from cpp-root.el
 
-(defconst ede-ant-project-file-name "build.xml" "\
-name of project file for Ant projects")
-
-(autoload 'ede-ant-project-root "ede/ant" "\
-Get the Ant root directory for DIR.
+(autoload 'ede-cpp-root-project-root "ede/cpp-root" "\
+Get the root directory for DIR.
 
 \(fn &optional DIR)" nil nil)
 
-(autoload 'ede-ant-load "ede/ant" "\
-Return a Leiningen Project object if there is a match.
-Return nil if there isn't one.
-Argument DIR is the directory it is created for.
-ROOTPROJ is nil, since there is only one project.
+(ede-add-project-autoload (ede-project-autoload "cpp-root" :name "CPP ROOT" :file 'ede/cpp-root :proj-file 'ede-cpp-root-project-file-for-dir :proj-root 'ede-cpp-root-project-root :load-type 'ede-cpp-root-load :class-sym 'ede-cpp-root-project :new-p nil :safe-p t) 'unique)
 
-\(fn DIR &optional ROOTPROJ)" nil nil)
-
-(eieio-defclass-autoload 'ede-ant-project '(ede-jvm-base-project eieio-instance-tracker) "ede/ant" "EDE Ant project class.")
-
-(ede-add-project-autoload (ede-project-autoload "ant" :name "Ant" :file 'ede/ant :proj-file ede-ant-project-file-name :proj-root 'ede-ant-project-root :load-type 'ede-ant-load :class-sym 'ede-ant-project :new-p nil :safe-p t) 'generic)
+(eieio-defclass-autoload 'ede-cpp-root-project '(ede-project eieio-instance-tracker) "ede/cpp-root" "EDE cpp-root project class.\nEach directory needs a project file to control it.")
 
 ;;;***
 
 ;;;### (autoloads (ede-arduino-load ede-arduino-file ede-arduino-root)
-;;;;;;  "ede/arduino" "arduino.el" (21253 29276))
+;;;;;;  "ede/arduino" "arduino.el" "5debad48d908b12c0ec2d479ce9319e1")
 ;;; Generated autoloads from arduino.el
 
 (autoload 'ede-arduino-root "ede/arduino" "\
@@ -82,48 +78,52 @@ ROOTPROJ is nil, sinc there is only one project for a directory tree.
 
 ;;;***
 
-;;;### (autoloads (ede-cpp-root-project ede-cpp-root-project-root)
-;;;;;;  "ede/cpp-root" "cpp-root.el" (21253 29276))
-;;; Generated autoloads from cpp-root.el
+;;;### (autoloads (ede-ant-project ede-ant-load ede-ant-project-root)
+;;;;;;  "ede/ant" "ant.el" "4dc977df3224723ac370e15496480835")
+;;; Generated autoloads from ant.el
 
-(autoload 'ede-cpp-root-project-root "ede/cpp-root" "\
-Get the root directory for DIR.
+(defconst ede-ant-project-file-name "build.xml" "\
+name of project file for Ant projects")
+
+(autoload 'ede-ant-project-root "ede/ant" "\
+Get the Ant root directory for DIR.
 
 \(fn &optional DIR)" nil nil)
 
-(ede-add-project-autoload (ede-project-autoload "cpp-root" :name "CPP ROOT" :file 'ede/cpp-root :proj-file 'ede-cpp-root-project-file-for-dir :proj-root 'ede-cpp-root-project-root :load-type 'ede-cpp-root-load :class-sym 'ede-cpp-root-project :new-p nil :safe-p t) 'unique)
+(autoload 'ede-ant-load "ede/ant" "\
+Return a Leiningen Project object if there is a match.
+Return nil if there isn't one.
+Argument DIR is the directory it is created for.
+ROOTPROJ is nil, since there is only one project.
 
-(eieio-defclass-autoload 'ede-cpp-root-project '(ede-project eieio-instance-tracker) "ede/cpp-root" "EDE cpp-root project class.\nEach directory needs a project file to control it.")
+\(fn DIR &optional ROOTPROJ)" nil nil)
+
+(eieio-defclass-autoload 'ede-ant-project '(ede-jvm-base-project eieio-instance-tracker) "ede/ant" "EDE Ant project class.")
+
+(ede-add-project-autoload (ede-project-autoload "ant" :name "Ant" :file 'ede/ant :proj-file ede-ant-project-file-name :proj-root 'ede-ant-project-root :load-type 'ede-ant-load :class-sym 'ede-ant-project :new-p nil :safe-p t) 'generic)
 
 ;;;***
 
-;;;### (autoloads (ede-project-sort-targets ede-customize-current-target
-;;;;;;  ede-customize-project) "ede/custom" "custom.el" (21253 29276))
-;;; Generated autoloads from custom.el
+;;;### (autoloads (ede-android-project ede-android-load) "ede/android"
+;;;;;;  "android.el" "10598c8f80f29ee87aad25b3f6f5b2fb")
+;;; Generated autoloads from android.el
 
-(autoload 'ede-customize-project "ede/custom" "\
-Edit fields of the current project through EIEIO & Custom.
+(autoload 'ede-android-load "ede/android" "\
+Return an Android Project object if there is a match.
+Return nil if there isn't one.
+Argument DIR is the directory it is created for.
+ROOTPROJ is nil, since there is only one project.
 
-\(fn)" t nil)
+\(fn DIR &optional ROOTPROJ)" nil nil)
 
-(defalias 'customize-project 'ede-customize-project)
+(ede-add-project-autoload (ede-project-autoload "android" :name "ANDROID ROOT" :file 'ede/android :proj-file "AndroidManifest.xml" :load-type 'ede-android-load :class-sym 'ede-android-project :new-p t :safe-p t))
 
-(autoload 'ede-customize-current-target "ede/custom" "\
-Edit fields of the current target through EIEIO & Custom.
-
-\(fn)" t nil)
-
-(defalias 'customize-target 'ede-customize-current-target)
-
-(autoload 'ede-project-sort-targets "ede/custom" "\
-Create a custom-like buffer for sorting targets of current project.
-
-\(fn)" t nil)
+(eieio-defclass-autoload 'ede-android-project '(ede-project eieio-instance-tracker) "ede/android" "Project for Android applications.")
 
 ;;;***
 
 ;;;### (autoloads (ede-emacs-project-root) "ede/emacs" "emacs.el"
-;;;;;;  (21253 29276))
+;;;;;;  "17f91044a4bd7a2537d2d384f9f4094f")
 ;;; Generated autoloads from emacs.el
 
 (autoload 'ede-emacs-project-root "ede/emacs" "\
@@ -135,7 +135,7 @@ Get the root directory for DIR.
 
 ;;;***
 
-;;;### (autoloads (ede-find-file) "ede/files" "files.el" (21253 29276))
+;;;### (autoloads (ede-find-file) "ede/files" "files.el" "bf053156434b0741788f4ec5e68d4168")
 ;;; Generated autoloads from files.el
 
 (autoload 'ede-find-file "ede/files" "\
@@ -148,7 +148,7 @@ the current EDE project.
 ;;;***
 
 ;;;### (autoloads (ede-enable-generic-projects) "ede/generic" "generic.el"
-;;;;;;  (21253 29276))
+;;;;;;  "39b29925e7c74a293bf744dfdbc826d5")
 ;;; Generated autoloads from generic.el
 
 (autoload 'ede-enable-generic-projects "ede/generic" "\
@@ -159,7 +159,7 @@ Enable generic project loaders.
 ;;;***
 
 ;;;### (autoloads (ede-java-root-project ede-java-root-project-root)
-;;;;;;  "ede/java-root" "java-root.el" (21253 29276))
+;;;;;;  "ede/java-root" "java-root.el" "40262c9216b072f7105b408e895e018b")
 ;;; Generated autoloads from java-root.el
 
 (autoload 'ede-java-root-project-root "ede/java-root" "\
@@ -174,7 +174,7 @@ Get the root directory for DIR.
 ;;;***
 
 ;;;### (autoloads (ede-jvm-base-project) "ede/jvm-base" "jvm-base.el"
-;;;;;;  (21253 29276))
+;;;;;;  "a24edb6f9f47c2b74ac8f836f7c4b7bd")
 ;;; Generated autoloads from jvm-base.el
 
 (eieio-defclass-autoload 'ede-jvm-base-project '(ede-project) "ede/jvm-base" "Base project class for JVM-base projects.")
@@ -182,7 +182,7 @@ Get the root directory for DIR.
 ;;;***
 
 ;;;### (autoloads (ede-lein2-project ede-lein2-load ede-lein2-project-root)
-;;;;;;  "ede/lein2" "lein2.el" (21253 29276))
+;;;;;;  "ede/lein2" "lein2.el" "d9fcc7d68130981b8db22a28b6c6cf76")
 ;;; Generated autoloads from lein2.el
 
 (defconst ede-lein2-project-file-name "project.clj" "\
@@ -208,7 +208,7 @@ ROOTPROJ is nil, since there is only one project.
 ;;;***
 
 ;;;### (autoloads (ede-linux-load ede-linux-project-root) "ede/linux"
-;;;;;;  "linux.el" (21253 29276))
+;;;;;;  "linux.el" "aad035a705ef1c63a3277288bf913756")
 ;;; Generated autoloads from linux.el
 
 (autoload 'ede-linux-project-root "ede/linux" "\
@@ -229,7 +229,7 @@ ROOTPROJ is nil, since there is only one project.
 ;;;***
 
 ;;;### (autoloads (ede-enable-locate-on-project) "ede/locate" "locate.el"
-;;;;;;  (21253 29276))
+;;;;;;  "79012249c7f559eda0047e5ebc7cd792")
 ;;; Generated autoloads from locate.el
 
 (autoload 'ede-enable-locate-on-project "ede/locate" "\
@@ -241,18 +241,17 @@ based on `ede-locate-setup-options'.
 
 ;;;***
 
-;;;### (autoloads (ede-m3-install) "ede/m3" "m3.el" (21253 29276))
+;;;### (autoloads (ede-m3-install) "ede/m3" "m3.el" "8c66b690945b4e5f69c8f9d074deec01")
 ;;; Generated autoloads from m3.el
 
 (autoload 'ede-m3-install "ede/m3" "\
-
+Not documented
 
 \(fn)" nil nil)
 
 ;;;***
 
-;;;### (autoloads (ede-make-check-version) "ede/make" "make.el" (21253
-;;;;;;  29276))
+;;;### (autoloads (ede-make-check-version) "ede/make" "make.el" "84364d952d6bc626c1a605a7e823c3cb")
 ;;; Generated autoloads from make.el
 
 (autoload 'ede-make-check-version "ede/make" "\
@@ -267,7 +266,7 @@ If NOERROR is nil, then throw an error on failure.  Return t otherwise.
 ;;;***
 
 ;;;### (autoloads (ede-maven2-project ede-maven2-load ede-maven2-project-root)
-;;;;;;  "ede/maven2" "maven2.el" (21253 29276))
+;;;;;;  "ede/maven2" "maven2.el" "16b0e44093f8c188a154e11f38cac300")
 ;;; Generated autoloads from maven2.el
 
 (autoload 'ede-maven2-project-root "ede/maven2" "\
@@ -290,7 +289,7 @@ ROOTPROJ is nil, since there is only one project.
 ;;;***
 
 ;;;### (autoloads (ede-speedbar-file-setup) "ede/speedbar" "speedbar.el"
-;;;;;;  (21253 29276))
+;;;;;;  "67cfb8cf3fe708acdd3d87a14f50af07")
 ;;; Generated autoloads from speedbar.el
 
 (autoload 'ede-speedbar-file-setup "ede/speedbar" "\
@@ -302,7 +301,7 @@ Setup some keybindings in the Speedbar File display.
 
 ;;;### (autoloads (ede-vc-project-directory ede-upload-html-documentation
 ;;;;;;  ede-upload-distribution ede-edit-web-page ede-web-browse-home)
-;;;;;;  "ede/system" "system.el" (21253 29276))
+;;;;;;  "ede/system" "system.el" "af9b58fc58b806c47ac6eebb05f595dd")
 ;;; Generated autoloads from system.el
 
 (autoload 'ede-web-browse-home "ede/system" "\
@@ -336,8 +335,7 @@ Run `vc-dir' on the current project.
 
 ;;;***
 
-;;;### (autoloads (ede-update-version) "ede/util" "util.el" (21253
-;;;;;;  29276))
+;;;### (autoloads (ede-update-version) "ede/util" "util.el" "3152bd9d4d1f762fbcb6f019dd0a25f7")
 ;;; Generated autoloads from util.el
 
 (autoload 'ede-update-version "ede/util" "\
@@ -353,7 +351,7 @@ Argument NEWVERSION is the version number to use in the current project.
 ;;;;;;  "proj-aux.el" "proj-comp.el" "proj-elisp.el" "proj-info.el"
 ;;;;;;  "proj-misc.el" "proj-obj.el" "proj-prog.el" "proj-scheme.el"
 ;;;;;;  "proj-shared.el" "proj.el" "project-am.el" "shell.el" "source.el"
-;;;;;;  "srecode.el") (21256 42803 587103))
+;;;;;;  "srecode.el") (21316 22460 799932))
 
 ;;;***
 

@@ -19,7 +19,7 @@
   (byte-recompile-directory directory 0 t))
 
 ; set the default width and height
-(set-frame-height (selected-frame) 82)
+(set-frame-height (selected-frame) 70)
 (set-frame-width (selected-frame) 115)
 (setq default-fill-column 100)
 
@@ -293,93 +293,93 @@
 (defun python-shell-internal-send-string (string) "")
 
 ; CEDET
-;(load-file "~/.emacs-lisp/cedet-1.1/common/cedet.el")
-(load-file "~/.emacs-lisp/cedet_trunk_20140220/cedet-devel-load.el")
-
-;;(semantic-load-enable-semantic-debugging-helpers)      ; Enable prototype help and smart completion
-(semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
-(setq global-semantic-stickyfunc-mode nil)
-(global-srecode-minor-mode 1)            ; Enable template insertion menu
-(require 'semantic/ia)                   ; additional features for names comletion and displaying information of tags
-(require 'semantic/bovine/gcc)
-
-(require 'semantic/db)
-(global-semanticdb-minor-mode 1)
-
-; remove python hook from CEDET
-(remove-hook 'python-mode-hook 'wisent-python-default-setup)
-
-(defun my-cedet-hook ()
-  (local-set-key [(control return)] 'semantic-ia-complete-symbol)
-  (local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
-  (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
-;;  (local-set-key (kbd "C-M-/") 'semantic-complete-analyze-inline)
-  (local-set-key "\C-c=" 'semantic-decoration-include-visit)
-  (local-set-key "\C-cj" 'semantic-ia-fast-jump)
-  (local-set-key "\C-cq" 'semantic-ia-show-doc)
-  (local-set-key "\C-cs" 'semantic-ia-show-summary)
-  (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
-;;  (local-set-key "\C-cp" 'semantic-symref)
-  (local-set-key "\C-c+" 'semantic-tag-folding-show-block)
-  (local-set-key "\C-c-" 'semantic-tag-folding-fold-block)
-  (local-set-key "\C-c\C-c+" 'semantic-tag-folding-show-all)
-  (local-set-key "\C-c\C-c-" 'semantic-tag-folding-fold-all)
-  )
-(add-hook 'c-mode-common-hook 'my-cedet-hook)
-(add-hook 'c++-mode-common-hook 'my-cedet-hook)
-
-;; gnu global support
-(require 'semantic/db-global)
-(semanticdb-enable-gnu-global-databases 'c-mode)
-(semanticdb-enable-gnu-global-databases 'c++-mode)
-
-;;; ede customization
-;;(require 'semantic-lex-spp)
-;;(global-ede-mode 'nil)                      ; Enable the Project management system
-;;disable header tag
-;;(setq global-semantic-stickyfunc-mode nil)
-
-(defun openrave-package-path ()
-  (if (executable-find "openrave-config")
-      (save-excursion
-        (with-temp-buffer
-          (call-process "openrave-config" nil t nil "--cflags-only-I")
-          (goto-char (point-min))
-          (re-search-forward "^-I\\(.*\\)[ \\|$]")
-          (match-string 1)))
-    ""
-    ))
-
-(setq openrave-base-dir (openrave-package-path))
-(message "openrave dir: %s" (openrave-package-path))
-
-; Use of this setting will lead to execution of semantic-complete-self-insert
-; command when user will press . or > after variables, that are class or
-; structure instances, and displaying of list of possible completions for given class or structure.
-(defun my-c-mode-cedet-hook ()
-;  (local-set-key "." 'semantic-complete-self-insert)
-;  (local-set-key ">" 'semantic-complete-self-insert)
-)
-(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
-(add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
-
-(defun my-semantic-hook ()
-  (imenu-add-to-menubar "TAGS")
-)
-
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
-
-;; (if (file-exists-p "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include/openrave/openrave.h")
-;;     (progn    
-;;       (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c++-mode)
-;;       (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c-mode)
-;;       )
-;;   nil)
-
-(if (file-exists-p (concat openrave-base-dir "/openrave/config.h"))
-;  (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat openrave-base-dir "/openrave/config.h"))
-  (semantic-add-system-include (concat openrave-base-dir "/openrave"))
-)
+;; ;(load-file "~/.emacs-lisp/cedet-1.1/common/cedet.el")
+;; (load-file "~/.emacs-lisp/cedet_trunk_20140220/cedet-devel-load.el")
+;; 
+;; ;;(semantic-load-enable-semantic-debugging-helpers)      ; Enable prototype help and smart completion
+;; (semantic-load-enable-code-helpers)      ; Enable prototype help and smart completion
+;; (setq global-semantic-stickyfunc-mode nil)
+;; (global-srecode-minor-mode 1)            ; Enable template insertion menu
+;; (require 'semantic/ia)                   ; additional features for names comletion and displaying information of tags
+;; (require 'semantic/bovine/gcc)
+;; 
+;; (require 'semantic/db)
+;; (global-semanticdb-minor-mode 1)
+;; 
+;; ; remove python hook from CEDET
+;; (remove-hook 'python-mode-hook 'wisent-python-default-setup)
+;; 
+;; (defun my-cedet-hook ()
+;;   (local-set-key [(control return)] 'semantic-ia-complete-symbol)
+;;   (local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
+;;   (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
+;; ;;  (local-set-key (kbd "C-M-/") 'semantic-complete-analyze-inline)
+;;   (local-set-key "\C-c=" 'semantic-decoration-include-visit)
+;;   (local-set-key "\C-cj" 'semantic-ia-fast-jump)
+;;   (local-set-key "\C-cq" 'semantic-ia-show-doc)
+;;   (local-set-key "\C-cs" 'semantic-ia-show-summary)
+;;   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
+;; ;;  (local-set-key "\C-cp" 'semantic-symref)
+;;   (local-set-key "\C-c+" 'semantic-tag-folding-show-block)
+;;   (local-set-key "\C-c-" 'semantic-tag-folding-fold-block)
+;;   (local-set-key "\C-c\C-c+" 'semantic-tag-folding-show-all)
+;;   (local-set-key "\C-c\C-c-" 'semantic-tag-folding-fold-all)
+;;   )
+;; (add-hook 'c-mode-common-hook 'my-cedet-hook)
+;; (add-hook 'c++-mode-common-hook 'my-cedet-hook)
+;; 
+;; ;; gnu global support
+;; (require 'semantic/db-global)
+;; (semanticdb-enable-gnu-global-databases 'c-mode)
+;; (semanticdb-enable-gnu-global-databases 'c++-mode)
+;; 
+;; ;;; ede customization
+;; ;;(require 'semantic-lex-spp)
+;; ;;(global-ede-mode 'nil)                      ; Enable the Project management system
+;; ;;disable header tag
+;; ;;(setq global-semantic-stickyfunc-mode nil)
+;; 
+;; (defun openrave-package-path ()
+;;   (if (executable-find "openrave-config")
+;;       (save-excursion
+;;         (with-temp-buffer
+;;           (call-process "openrave-config" nil t nil "--cflags-only-I")
+;;           (goto-char (point-min))
+;;           (re-search-forward "^-I\\(.*\\)[ \\|$]")
+;;           (match-string 1)))
+;;     ""
+;;     ))
+;; 
+;; (setq openrave-base-dir (openrave-package-path))
+;; (message "openrave dir: %s" (openrave-package-path))
+;; 
+;; ; Use of this setting will lead to execution of semantic-complete-self-insert
+;; ; command when user will press . or > after variables, that are class or
+;; ; structure instances, and displaying of list of possible completions for given class or structure.
+;; (defun my-c-mode-cedet-hook ()
+;; ;  (local-set-key "." 'semantic-complete-self-insert)
+;; ;  (local-set-key ">" 'semantic-complete-self-insert)
+;; )
+;; (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
+;; (add-hook 'c++-mode-common-hook 'my-c-mode-cedet-hook)
+;; 
+;; (defun my-semantic-hook ()
+;;   (imenu-add-to-menubar "TAGS")
+;; )
+;; 
+;; (add-hook 'semantic-init-hooks 'my-semantic-hook)
+;; 
+;; ;; (if (file-exists-p "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include/openrave/openrave.h")
+;; ;;     (progn    
+;; ;;       (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c++-mode)
+;; ;;       (semantic-add-system-include "/home/rdiankov/mujin/dev/ros/mujin/openrave_mujin/openrave_git/include" 'c-mode)
+;; ;;       )
+;; ;;   nil)
+;; 
+;; (if (file-exists-p (concat openrave-base-dir "/openrave/config.h"))
+;; ;  (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat openrave-base-dir "/openrave/config.h"))
+;;   (semantic-add-system-include (concat openrave-base-dir "/openrave"))
+;; )
 
 
 ;; don't enable this since it forces C++ mode on many things

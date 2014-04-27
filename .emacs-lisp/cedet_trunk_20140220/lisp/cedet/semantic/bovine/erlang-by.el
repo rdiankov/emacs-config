@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2002, 2003 Vladimir G. Sekissov
 
-;; Author: Rosen Diankov <rdiankov@rdiankov-laptop>
-;; Created: 2014-02-20 12:13:32+0900
+;; Author: Rosen Diankov <rdiankov@rdiankov>
+;; Created: 2014-04-08 13:10:44-0700
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

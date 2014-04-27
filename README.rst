@@ -12,6 +12,7 @@ Ubuntu 10.04:
 
   sudo add-apt-repository ppa:cassou/emacs
   sudo apt-get update
+  sudo apt-get install --no-install-recommends texinfo
   sudo apt-get install emacs-snapshot emacs-snapshot-el # emacs 24.1
   sudo apt-get install emacs-snapshot-lucid # optional
 
