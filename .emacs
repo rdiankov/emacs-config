@@ -37,6 +37,12 @@
       (auto-fill-mode 1)
       ))
 
+(require 'ansi-color)
+(defun display-ansi-colors ()
+  (interactive)
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+
 ;; Open files and goto lines like we see from g++ etc. i.e. file:line#
 ;; (to-do "make `find-file-line-number' work for emacsclient as well")
 ;; (to-do "make `find-file-line-number' check if the file exists")

@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2002-2012 Free Software Foundation, Inc.
 
-;; Author: Rosen Diankov <rdiankov@rdiankov-laptop>
-;; Created: 2014-02-20 12:13:15+0900
+;; Author: Rosen Diankov <rdiankov@rdiankov2.mujin.co.jp>
+;; Created: 2015-04-19 14:05:26+0900
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

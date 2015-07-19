@@ -3,7 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (cogre-export-ascii) "cogre/ascii" "ascii.el" "af06d47ff041318d21bcbe5f8f1bc4c0")
+;;;### (autoloads nil "cogre/ascii" "ascii.el" (21811 14229 203983
+;;;;;;  788000))
 ;;; Generated autoloads from ascii.el
 
 (autoload 'cogre-export-ascii "cogre/ascii" "\
@@ -13,8 +14,8 @@ Export the current diagram into an ASCII buffer.
 
 ;;;***
 
-;;;### (autoloads (cogre-export-dot-postscript-print cogre-export-dot-png
-;;;;;;  cogre-export-dot) "cogre/convert" "convert.el" "f9ee5cf1991f06c6647712d86a078aff")
+;;;### (autoloads nil "cogre/convert" "convert.el" (21811 14229 203983
+;;;;;;  788000))
 ;;; Generated autoloads from convert.el
 
 (autoload 'cogre-export-dot "cogre/convert" "\
@@ -40,8 +41,8 @@ DOT is a part of GraphVis.
 
 ;;;***
 
-;;;### (autoloads (cogre-dot-mode) "cogre/dot-mode" "dot-mode.el"
-;;;;;;  "e2fe2e0bb579079063fc27f18740448c")
+;;;### (autoloads nil "cogre/dot-mode" "dot-mode.el" (21811 14229
+;;;;;;  203983 788000))
 ;;; Generated autoloads from dot-mode.el
 
 (autoload 'cogre-dot-mode "cogre/dot-mode" "\
@@ -57,7 +58,8 @@ as a parsing engine.
 
 ;;;***
 
-;;;### (autoloads (cogre-layout) "cogre/layout" "layout.el" "eb0a017deefcac0fa1f46e9daa79c420")
+;;;### (autoloads nil "cogre/layout" "layout.el" (21811 14229 203983
+;;;;;;  788000))
 ;;; Generated autoloads from layout.el
 
 (autoload 'cogre-layout "cogre/layout" "\
@@ -68,7 +70,8 @@ This function depends on graphviz `dot' program.
 
 ;;;***
 
-;;;### (autoloads (cogre-mode) "cogre/mode" "mode.el" "70d1a0c1025ef55ab8e2100fe8efc236")
+;;;### (autoloads nil "cogre/mode" "mode.el" (21811 14229 203983
+;;;;;;  788000))
 ;;; Generated autoloads from mode.el
 
 (autoload 'cogre-mode "cogre/mode" "\
@@ -81,8 +84,8 @@ Connected Graph Editor Mode.
 
 ;;;***
 
-;;;### (autoloads (cogre-periodic) "cogre/periodic" "periodic.el"
-;;;;;;  "83d4c1c2c364ca9cb1d8c7ddf4a7b381")
+;;;### (autoloads nil "cogre/periodic" "periodic.el" (21811 14229
+;;;;;;  203983 788000))
 ;;; Generated autoloads from periodic.el
 
 (autoload 'cogre-periodic "cogre/periodic" "\
@@ -92,8 +95,8 @@ Create a periodic table of COGRE objects.
 
 ;;;***
 
-;;;### (autoloads (cogre-picture-insert-rectangle) "cogre/picture-hack"
-;;;;;;  "picture-hack.el" "223fcd18e2f4f6641818adf4afc7b6cb")
+;;;### (autoloads nil "cogre/picture-hack" "picture-hack.el" (21811
+;;;;;;  14229 203983 788000))
 ;;; Generated autoloads from picture-hack.el
 
 (autoload 'cogre-picture-insert-rectangle "cogre/picture-hack" "\
@@ -104,8 +107,8 @@ Leaves the region surrounding the rectangle.
 
 ;;;***
 
-;;;### (autoloads (cogre-uml-quick-class cogre-export-code cogre-semantic-tag-to-node)
-;;;;;;  "cogre/semantic" "semantic.el" "8b49ee9dc5e4e810fe5a204e51187e5e")
+;;;### (autoloads nil "cogre/semantic" "semantic.el" (21811 14229
+;;;;;;  203983 788000))
 ;;; Generated autoloads from semantic.el
 
 (autoload 'cogre-semantic-tag-to-node "cogre/semantic" "\
@@ -131,8 +134,8 @@ The parent to CLASS, CLASS, and all of CLASSes children will be shown.
 
 ;;;***
 
-;;;### (autoloads (srecode-semantic-handle-:dot srecode-semantic-handle-:cogre
-;;;;;;  cogre-srecode-setup) "cogre/srecode" "srecode.el" "0979981f919ca32452786239c110daa5")
+;;;### (autoloads nil "cogre/srecode" "srecode.el" (21811 14229 203983
+;;;;;;  788000))
 ;;; Generated autoloads from srecode.el
 
 (autoload 'cogre-srecode-setup "cogre/srecode" "\
@@ -154,8 +157,7 @@ Add macros to dictionary DICT based on the current DOT buffer.
 
 ;;;***
 
-;;;### (autoloads (cogre-uml-sort-for-lineage cogre-uml-enable-unicode)
-;;;;;;  "cogre/uml" "uml.el" "730aa8fe82cd658f6bfb0c00d8d8404f")
+;;;### (autoloads nil "cogre/uml" "uml.el" (21811 14229 203983 788000))
 ;;; Generated autoloads from uml.el
 
 (autoload 'cogre-uml-enable-unicode "cogre/uml" "\
@@ -179,8 +181,8 @@ Return it as a list of lists.  Each entry is of the form:
 
 ;;;***
 
-;;;### (autoloads (wisent-dot-setup-parser) "cogre/wisent-dot" "wisent-dot.el"
-;;;;;;  "098827214c96f8d6c2a618118e3377d9")
+;;;### (autoloads nil "cogre/wisent-dot" "wisent-dot.el" (21811 14229
+;;;;;;  207983 788000))
 ;;; Generated autoloads from wisent-dot.el
 
 (autoload 'wisent-dot-setup-parser "cogre/wisent-dot" "\
@@ -194,7 +196,8 @@ Setup buffer for parse.
 
 ;;;***
 
-;;;### (autoloads nil nil ("wisent-dot-wy.el") (21316 22459 913315))
+;;;### (autoloads nil nil ("wisent-dot-wy.el") (21811 14229 775094
+;;;;;;  411000))
 
 ;;;***
 
