@@ -655,6 +655,11 @@
       (kill-new new-kill-string))))
 (global-set-key (read-kbd-macro "M-C-w") 'copy-buffer-file-name-as-kill)
 
+(defun my-multi-occur-in-matching-buffers (regexp &optional allbufs)
+  "Show all lines matching REGEXP in all buffers."
+  (interactive (occur-read-primary-args))
+  (multi-occur-in-matching-buffers ".*" regexp))
+(global-set-key (kbd "M-s /") 'my-multi-occur-in-matching-buffers)
 
 ;; python 
 ; http://www.emacswiki.org/emacs/?action=browse;oldid=PythonMode;id=PythonProgrammingInEmacs

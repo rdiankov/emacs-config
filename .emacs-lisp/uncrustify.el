@@ -132,7 +132,7 @@ The configuration file will be read from the specification given by
 The configuration file will be read from the specification given by
 `uncrustify-uncrustify-cfg-file'. The cursor will attempt to (re)locate
 the current line, which might change as a result of the uncrustification."
-(message "why sadfasdf")
+(message "running uncrustify to ident")
 (interactive)
 (let* ((uncrustify-current-line (line-number-at-pos)))
 (save-excursion
