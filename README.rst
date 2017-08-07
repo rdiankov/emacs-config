@@ -8,7 +8,7 @@ Assuming thiis cloned to ~/rdiankov-emacs-config, execute the following to setup
 
 Ubuntu 10.04:
 
-.. code-block::
+::
 
   sudo add-apt-repository ppa:cassou/emacs
   sudo apt-get update
@@ -18,6 +18,12 @@ Ubuntu 10.04:
 
 Ubuntu All:
   sudo apt-get install --no-install-recommends python-mode pymacs xfonts-75dpi
+
+Debian 9 Stretch:
+
+::
+
+  sudo apt-get install install-info
 
 All:
 
