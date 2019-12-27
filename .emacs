@@ -19,8 +19,12 @@
   (byte-recompile-directory directory 0 t))
 
 ; set the default width and height
-(set-frame-height (selected-frame) 70)
-(set-frame-width (selected-frame) 115)
+; For 4K resolution::
+;(set-frame-width (selected-frame) 150)
+;(set-frame-height (selected-frame) 160)
+; For 1920x1080 resolution
+(set-frame-width (selected-frame) 150)
+(set-frame-height (selected-frame) 160)
 (setq default-fill-column 100)
 
 (defun wc ()
@@ -241,6 +245,7 @@
 (global-set-key (kbd "<C-down>") 'scroll-up-keep-cursor);
 (global-set-key (kbd "<C-up>") 'scroll-down-keep-cursor)
 (global-set-key (kbd "C-M-g") 'goto-line)
+(global-set-key (kbd "C-S-e") 'rename-buffer)
 
 ;; M-n and M-p
 (global-unset-key "\M-p")
@@ -501,7 +506,17 @@
 
 ; $ fc-list :spacing=mono
 ; $ xlsfonts
+
+; for 1920x1080 resolution
 (set-default-font "-adobe-courier-medium-r-normal--12-120-75-75-m-70-iso8859-1")
+
+;(set-default-font "-adobe-courier-medium-r-normal--18-180-75-75-m-110-iso8859-1")
+;(set-default-font "-adobe-courier-medium-r-normal--20-140-100-100-m-110-iso8859-1")
+
+; for 4K resolution
+;(set-default-font "-adobe-courier-medium-r-normal--24-240-75-75-m-150-iso8859-1")
+
+;(set-default-font "--adobe-courier-medium-r-normal--34-240-100-100-m-200-iso8859-1")
 ;(set-default-font "Inconsolata-8")
 ;(set-default-font "DejaVu Sans Mono:style=Book")
 

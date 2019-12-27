@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads nil "cedet-android" "cedet-android.el" (21811 14229
-;;;;;;  203983 788000))
+;;;### (autoloads nil "cedet-android" "cedet-android.el" (22919 65180
+;;;;;;  135988 307000))
 ;;; Generated autoloads from cedet-android.el
 
 (autoload 'cedet-android-create-project "cedet-android" "\
@@ -63,8 +63,8 @@ Update the classpath for `cedet-java' to include the android compile-time librar
 
 ;;;***
 
-;;;### (autoloads nil "cedet-edebug" "cedet-edebug.el" (21811 14229
-;;;;;;  203983 788000))
+;;;### (autoloads nil "cedet-edebug" "cedet-edebug.el" (22919 65180
+;;;;;;  135988 307000))
 ;;; Generated autoloads from cedet-edebug.el
 
 (add-hook 'edebug-setup-hook (lambda nil (require 'cedet-edebug) (defalias 'edebug-prin1-to-string 'cedet-edebug-prin1-to-string) (define-key edebug-mode-map "A" 'data-debug-edebug-expr)))
@@ -73,8 +73,8 @@ Update the classpath for `cedet-java' to include the android compile-time librar
 
 ;;;***
 
-;;;### (autoloads nil "cedet-global" "cedet-global.el" (21811 14229
-;;;;;;  203983 788000))
+;;;### (autoloads nil "cedet-global" "cedet-global.el" (22919 65180
+;;;;;;  135988 307000))
 ;;; Generated autoloads from cedet-global.el
 
 (autoload 'cedet-gnu-global-version-check "cedet-global" "\
@@ -87,8 +87,8 @@ return nil.
 
 ;;;***
 
-;;;### (autoloads nil "cedet-graphviz" "cedet-graphviz.el" (21811
-;;;;;;  14229 203983 788000))
+;;;### (autoloads nil "cedet-graphviz" "cedet-graphviz.el" (22919
+;;;;;;  65180 135988 307000))
 ;;; Generated autoloads from cedet-graphviz.el
 
 (defvar cedet-graphviz-dot-command "dot" "\
@@ -111,8 +111,8 @@ return nil.
 
 ;;;***
 
-;;;### (autoloads nil "cedet-java" "cedet-java.el" (21811 14229 203983
-;;;;;;  788000))
+;;;### (autoloads nil "cedet-java" "cedet-java.el" (22919 65180 135988
+;;;;;;  307000))
 ;;; Generated autoloads from cedet-java.el
 
 (autoload 'cedet-java-version-check "cedet-java" "\
@@ -131,8 +131,8 @@ Display in a javap output buffer.
 
 ;;;***
 
-;;;### (autoloads nil "cedet-m3" "cedet-m3.el" (21811 14229 203983
-;;;;;;  788000))
+;;;### (autoloads nil "cedet-m3" "cedet-m3.el" (22919 65180 135988
+;;;;;;  307000))
 ;;; Generated autoloads from cedet-m3.el
 
 (autoload 'cedet-m3-minor-mode "cedet-m3" "\
@@ -145,8 +145,9 @@ Return non-nil if the minor mode is enabled.
 \(fn &optional ARG)" t nil)
 
 (defvar global-cedet-m3-minor-mode nil "\
-Non-nil if Global-Cedet-M3 minor mode is enabled.
-See the command `global-cedet-m3-minor-mode' for a description of this minor mode.
+Non-nil if Global Cedet-M3 minor mode is enabled.
+See the `global-cedet-m3-minor-mode' command
+for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `global-cedet-m3-minor-mode'.")
@@ -162,7 +163,7 @@ If ARG is nil, then toggle.
 
 ;;;***
 
-;;;### (autoloads nil "cogre" "cogre.el" (21811 14229 203983 788000))
+;;;### (autoloads nil "cogre" "cogre.el" (22919 65180 135988 307000))
 ;;; Generated autoloads from cogre.el
 
 (eieio-defclass-autoload 'cogre-graph-element '(eieio-named) "cogre" "A Graph Element.\nGraph elements are anything that is drawn into a `cogre-base-graph'.\nGraph elements have a method for marking themselves dirty.")
@@ -184,8 +185,8 @@ Optional argument GRAPH-CLASS indicates the type of graph to create.
 
 ;;;***
 
-;;;### (autoloads nil "data-debug" "data-debug.el" (21811 14229 207983
-;;;;;;  788000))
+;;;### (autoloads nil "data-debug" "data-debug.el" (22919 65180 135988
+;;;;;;  307000))
 ;;; Generated autoloads from data-debug.el
 
 (autoload 'data-debug-new-buffer "data-debug" "\
@@ -195,12 +196,13 @@ Create a new data-debug buffer with NAME.
 
 ;;;***
 
-;;;### (autoloads nil "ede" "ede.el" (21811 14229 207983 788000))
+;;;### (autoloads nil "ede" "ede.el" (22919 65180 139988 258000))
 ;;; Generated autoloads from ede.el
 
 (defvar global-ede-mode nil "\
-Non-nil if Global-Ede mode is enabled.
-See the command `global-ede-mode' for a description of this minor mode.
+Non-nil if Global Ede mode is enabled.
+See the `global-ede-mode' command
+for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `global-ede-mode'.")
@@ -220,7 +222,7 @@ an EDE controlled project.
 
 ;;;***
 
-;;;### (autoloads nil "fame" "fame.el" (21811 14229 211983 787000))
+;;;### (autoloads nil "fame" "fame.el" (22919 65180 143988 209000))
 ;;; Generated autoloads from fame.el
 
 (autoload 'define-fame-channel "fame" "\
@@ -241,8 +243,8 @@ messages to CHANNEL.
 
 ;;;***
 
-;;;### (autoloads nil "inversion" "inversion.el" (21811 14229 211983
-;;;;;;  787000))
+;;;### (autoloads nil "inversion" "inversion.el" (22919 65180 143988
+;;;;;;  209000))
 ;;; Generated autoloads from inversion.el
 
 (autoload 'inversion-require-emacs "inversion" "\
@@ -253,15 +255,15 @@ Only checks one based on which kind of Emacs is being run.
 
 ;;;***
 
-;;;### (autoloads nil "mode-local" "mode-local.el" (21811 14229 215983
-;;;;;;  787000))
+;;;### (autoloads nil "mode-local" "mode-local.el" (22919 65180 143988
+;;;;;;  209000))
 ;;; Generated autoloads from mode-local.el
 
 (put 'define-overloadable-function 'doc-string-elt 3)
 
 ;;;***
 
-;;;### (autoloads nil "pprint" "pprint.el" (21811 14229 215983 787000))
+;;;### (autoloads nil "pprint" "pprint.el" (22919 65180 143988 209000))
 ;;; Generated autoloads from pprint.el
 
 (autoload 'pprint-to-string "pprint" "\
@@ -290,8 +292,8 @@ See a pretty-printed representation of FUNCTION-NAME.
 
 ;;;***
 
-;;;### (autoloads nil "semantic" "semantic.el" (21811 14229 215983
-;;;;;;  787000))
+;;;### (autoloads nil "semantic" "semantic.el" (22919 65180 143988
+;;;;;;  209000))
 ;;; Generated autoloads from semantic.el
 
 (defvar semantic-default-submodes '(global-semantic-idle-scheduler-mode global-semanticdb-minor-mode) "\
@@ -322,7 +324,8 @@ The following modes are more targeted at people who want to see
 
 (defvar semantic-mode nil "\
 Non-nil if Semantic mode is enabled.
-See the command `semantic-mode' for a description of this minor mode.
+See the `semantic-mode' command
+for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `semantic-mode'.")
@@ -349,7 +352,7 @@ Semantic mode.
 
 ;;;### (autoloads nil nil ("cedet-compat.el" "cedet-cscope.el" "cedet-files.el"
 ;;;;;;  "cedet-idutils.el" "cedet.el" "pulse.el" "srecode.el" "working.el")
-;;;;;;  (21811 14229 351466 499000))
+;;;;;;  (22919 65180 167987 916000))
 
 ;;;***
 

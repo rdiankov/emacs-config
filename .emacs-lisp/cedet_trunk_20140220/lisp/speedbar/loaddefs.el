@@ -3,7 +3,7 @@
 ;;; Code:
 
 
-;;;### (autoloads nil "rpm" "rpm.el" (21811 14229 255983 786000))
+;;;### (autoloads nil "rpm" "rpm.el" (22919 65180 171987 868000))
 ;;; Generated autoloads from rpm.el
 
 (autoload 'rpm "rpm" "\
@@ -13,8 +13,8 @@ Red Hat Package Management in Emacs.
 
 ;;;***
 
-;;;### (autoloads nil "sb-info" "sb-info.el" (21811 14229 255983
-;;;;;;  786000))
+;;;### (autoloads nil "sb-info" "sb-info.el" (22919 65180 171987
+;;;;;;  868000))
 ;;; Generated autoloads from sb-info.el
 
 (autoload 'Info-speedbar-browser "sb-info" "\
@@ -33,8 +33,8 @@ BUFFER is the buffer speedbar is requesting buttons for.
 
 ;;;***
 
-;;;### (autoloads nil "sb-rmail" "sb-rmail.el" (21811 14229 255983
-;;;;;;  786000))
+;;;### (autoloads nil "sb-rmail" "sb-rmail.el" (22919 65180 171987
+;;;;;;  868000))
 ;;; Generated autoloads from sb-rmail.el
 
 (autoload 'rmail-speedbar-buttons "sb-rmail" "\
@@ -48,7 +48,7 @@ current message into that RMAIL folder.
 ;;;***
 
 ;;;### (autoloads nil nil ("sb-ant.el" "sb-html.el" "sb-texinfo.el")
-;;;;;;  (21811 14229 651467 940000))
+;;;;;;  (22919 65180 171987 868000))
 
 ;;;***
 
