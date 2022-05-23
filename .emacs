@@ -146,6 +146,7 @@
 
 (setq-default c-basic-offset 4)
 (setq-default tab-width 4)
+(setq-default js-indent-level 2)
 
 (defun my-c++-mode-hook ()
   (setq tab-width 4)
