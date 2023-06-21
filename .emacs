@@ -167,6 +167,9 @@
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+; remove default changelog editor since it wrongly detects markdown files
+(rassq-delete-all 'change-log-mode auto-mode-alist)
+
 ; set tab width to 4 spaces
 
 
@@ -726,4 +729,9 @@ This command does not push text to `kill-ring'."
 ;;(global-set-key (kbd "C-S-k") 'my-delete-line-backward) ; Ctrl+Shift+k
 ;;(global-set-key (kbd "C-k") 'my-delete-line)
 (global-set-key (kbd "M-d") 'my-delete-word)
+(global-set-key (kbd "C-S-DEL") 'my-delete-word)
 (global-set-key (kbd "<M-backspace>") 'my-backward-delete-word)
+
+;; require elpa-avy package
+(load-file "~/.emacs-lisp/ace-window.el")
+(global-set-key (kbd "M-o") 'ace-window)

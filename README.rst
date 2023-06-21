@@ -6,24 +6,10 @@ A lot of the 3rd party scripts are directly copied in order to save users from h
 
 Assuming thiis cloned to ~/rdiankov-emacs-config, execute the following to setup in system:
 
-Ubuntu 10.04:
-
+Debian:
 ::
-
-  sudo add-apt-repository ppa:cassou/emacs
-  sudo apt-get update
-  sudo apt-get install --no-install-recommends texinfo
-  sudo apt-get install emacs-snapshot emacs-snapshot-el # emacs 24.1
-  sudo apt-get install emacs-snapshot-lucid # optional
-
-Ubuntu All:
-  sudo apt-get install --no-install-recommends python-mode pymacs xfonts-75dpi
-
-Debian 9 Stretch:
-
-::
-
-  sudo apt-get install install-info
+   
+   sudo apt-get install install-info python-mode xfonts-75dpi elpa-avy elpa-go-mode elpa-auto-complete 
 
 All:
 
