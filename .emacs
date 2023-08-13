@@ -250,7 +250,7 @@
 (global-set-key (kbd "<C-down>") 'scroll-up-keep-cursor);
 (global-set-key (kbd "<C-up>") 'scroll-down-keep-cursor)
 (global-set-key (kbd "C-M-g") 'goto-line)
-(global-set-key (kbd "C-S-e") 'rename-buffer)
+;(global-set-key (kbd "C-S-e") 'rename-buffer)
 
 ;; M-n and M-p
 (global-unset-key "\M-p")
@@ -302,7 +302,8 @@
   (execute-extended-command "gdb")
 )
 
-(remove-hook 'python-mode-hook 'wisent-python-default-setup)
+;(remove-hook 'python-mode-hook 'wisent-python-default-setup)
+;(add-hook 'python-mode-hook 'jedi:setup)
 
 ;(setq python-shell-internal-send-string (lambda (string) nil))
 ; in cedet semantic-python-get-system-include-path forces starting of the python interpreter in inferior mode. If python-shell-internal-send-string is defined before it, then we can skip loading python automatically (this might break other functionality?)
@@ -735,3 +736,7 @@ This command does not push text to `kill-ring'."
 ;; require elpa-avy package
 (load-file "~/.emacs-lisp/ace-window.el")
 (global-set-key (kbd "M-o") 'ace-window)
+
+;; can rename the top frame so that many emacs instances can be managed easily
+(load-file "~/.emacs-lisp/frame-cmds.el")
+(global-set-key (kbd "C-S-e") 'rename-frame)
