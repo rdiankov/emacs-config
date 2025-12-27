@@ -1,3 +1,5 @@
+;;(setq byte-compile-warnings '(cl-functions)) ;; gets rid of cl is deprecated message
+
 ; fixes emacs slow startup
 (modify-frame-parameters nil '((wait-for-wm . nil)))
 
@@ -569,7 +571,7 @@
 ;; Restore bookmarks when buffer is reverted.
 (add-hook 'after-revert-hook 'bm-buffer-restore)
 
-(require 'uncrustify)
+(require 'uncrustify-mode)
 (setq uncrustify-args "-l CPP --replace")
 (defun my-uncrustify-hook ()
 ;  (setq uncrustify-uncrustify-on-save t)
@@ -740,3 +742,14 @@ This command does not push text to `kill-ring'."
 ;; can rename the top frame so that many emacs instances can be managed easily
 (load-file "~/.emacs-lisp/frame-cmds.el")
 (global-set-key (kbd "C-S-e") 'rename-frame)
+
+(require 'loadhist)
+(file-dependents (feature-file 'cl))
+
+(add-to-list 'load-path (expand-file-name "~/.emacs-lisp/elpy"))
+(load "elpy")
+(load "elpy-rpc")
+(load "elpy-shell")
+(load "elpy-profile")
+(load "elpy-refactor")
+(load "elpy-django")
