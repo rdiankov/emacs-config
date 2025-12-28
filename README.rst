@@ -1,7 +1,8 @@
 Personal Emacs Configuration
 ----------------------------
 
-Stuff I've gathered over the many years of using emacs.
+Stuff I've gathered over the many years of using emacs. Latest update to Debian 13.
+
 A lot of the 3rd party scripts are directly copied in order to save users from hunting this across the net.
 
 Assuming thiis cloned to ~/rdiankov-emacs-config, execute the following to setup in system:
