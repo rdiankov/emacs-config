@@ -9,7 +9,7 @@ Assuming thiis cloned to ~/rdiankov-emacs-config, execute the following to setup
 Debian:
 ::
    
-   sudo apt-get install install-info python-mode xfonts-75dpi elpa-avy elpa-go-mode elpa-auto-complete  alpa-js2-mode
+   sudo apt-get install install-info python-mode xfonts-75dpi elpa-bm elpa-avy elpa-go-mode elpa-auto-complete elpa-js2-mode
 
 All:
 
@@ -18,10 +18,6 @@ All:
   git clone https://github.com/rdiankov/emacs-config.git $HOME/rdiankov-emacs-config
   ln -f -s $HOME/rdiankov-emacs-config/.emacs-lisp $HOME/.emacs-lisp
   ln -f -s $HOME/rdiankov-emacs-config/.emacs $HOME/.emacs
-  cd $HOME/.emacs-lisp/cedet_trunk_20140220
-  make EMACS=emacs
-  cd $HOME/.emacs-lisp/auto-complete-1.3.1
-  make install DIR=$HOME/.emacs-lisp
 
 Can byte-compile everything in the .emacs-lisp directory to accelerate the startup by running::
 
