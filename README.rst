@@ -10,7 +10,7 @@ Assuming thiis cloned to ~/rdiankov-emacs-config, execute the following to setup
 Debian:
 ::
    
-   sudo apt-get install install-info python-mode xfonts-75dpi elpa-bm elpa-avy elpa-go-mode elpa-auto-complete elpa-js2-mode
+   sudo apt-get install install-info xfonts-75dpi elpa-bm elpa-avy elpa-go-mode elpa-auto-complete elpa-js2-mode
 
 All:
 
