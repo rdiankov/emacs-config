@@ -747,12 +747,12 @@ This command does not push text to `kill-ring'."
 (file-dependents (feature-file 'cl))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs-lisp/elpy"))
-(load "elpy")
-(load "elpy-rpc")
-(load "elpy-shell")
-(load "elpy-profile")
-(load "elpy-refactor")
-(load "elpy-django")
+;; (load "elpy")
+;; (load "elpy-rpc")
+;; (load "elpy-shell")
+;; (load "elpy-profile")
+;; (load "elpy-refactor")
+;; (load "elpy-django")
 
 
 ;(add-to-list 'load-path "~/.emacs-lisp/claude-code-emacs")
