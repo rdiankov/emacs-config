@@ -10,7 +10,7 @@ Assuming thiis cloned to ~/rdiankov-emacs-config, execute the following to setup
 Debian:
 ::
    
-   sudo apt-get install install-info xfonts-75dpi elpa-bm elpa-avy elpa-go-mode elpa-auto-complete elpa-js2-mode
+   sudo apt-get install install-info xfonts-75dpi elpa-bm elpa-avy elpa-go-mode elpa-auto-complete elpa-js2-mode elpa-vterm elpa-projectile elpa-lsp-mode elpa-flycheck
 
 All:
 
@@ -25,5 +25,4 @@ Can byte-compile everything in the .emacs-lisp directory to accelerate the start
   C-u 0 M-x byte-recompile-directory
 
   
-Warning: This repository holds the emacs configuration I used everyday for my computer systems (Ubuntu 10.04/12.04, Debian). It is not meant to be cross-platform or supported on old systems.
-
+Warning: This repository holds the emacs configuration I used everyday for my current computer systems (Debian these days).

@@ -753,3 +753,8 @@ This command does not push text to `kill-ring'."
 (load "elpy-profile")
 (load "elpy-refactor")
 (load "elpy-django")
+
+
+;(add-to-list 'load-path "~/.emacs-lisp/claude-code-emacs")
+;(require 'claude-code)
+;(global-set-key (kbd "C-c c") 'claude-code-transient)
